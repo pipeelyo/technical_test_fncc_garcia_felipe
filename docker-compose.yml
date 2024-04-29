@@ -1,9 +1,19 @@
 version: "3.8"
 
 services:
+  app:
+    container_name: AppFncc
+    build: .
+    depends_on:
+      - mysqldb
+    env_file:
+      - ./.env
+    ports:
+      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
+
   mysqldb:
-    container_name: DbMysql
     image: mysql
+    container_name: DbMysql
     env_file:
       - ./.env
     environment:
@@ -11,15 +21,3 @@ services:
       - MYSQL_DATABASE=$MYSQLDB_DATABASE
     ports:
       - $MYSQLDB_LOCAL_PORT:$MYSQLDB_DOCKER_PORT
-
-  app:
-    container_name: AppFncc
-    build: .
-    depends_on:
-      - mysqldb
-    links:
-      - mysqldb
-    env_file:
-      - ./.env
-    ports:
-      - $NODE_LOCAL_PORT:$NODE_DOCKER_PORT
