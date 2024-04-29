@@ -12,7 +12,7 @@ export const appRouter = express.Router();
 appRouter.get(`/initialize`, async (req, res) => {
     const message = await connection.sync().then(async () => {
         console.log('DB synchronized');
-        let message = '';
+        let message;
         try {
             initializePriority();
             initializeStatus();

@@ -35,7 +35,7 @@ const SubTask = connection.define('sub_task', {
 export function initializeSubTask() {
     for (const subTask of subTasks) {
         SubTask.create(subTask).then(
-            Task => {
+            SubTask => {
                 console.log('Sub-Tasks created:', SubTask);
             }).catch(error => {
             console.error('Error creating Sub-Tasks:', error);

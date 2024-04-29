@@ -1,5 +1,5 @@
 import {connection} from "../db/connection.js";
-import {DataTypes, Model} from "sequelize";
+import {DataTypes} from "sequelize";
 
 const states = [
     {
