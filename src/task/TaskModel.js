@@ -69,7 +69,7 @@ const tasks = [
     }
 ];
 
-const Task = connection.define('task', {
+export const Task = connection.define('task', {
     id_task: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
